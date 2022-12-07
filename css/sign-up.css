@@ -48,11 +48,24 @@ header {
 }
 
 .form-control2 {
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.password-tip {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    grid-column: span 2;
 }
 
 .validation {
     display: none; /* displays flex using js */
+    color: rgba(255, 0, 0, 0.8);
+    font-size: 14px;
+    grid-column: span 2;
+}
+
+.validation i {
+    margin-right: 3px;
 }
 
 .right-section {
@@ -98,6 +111,7 @@ header {
     padding: 10px;
     background: transparent;
     width: 100%;
+    caret-color: #407BFF;
 }
 
 .form-control input:focus,
@@ -133,27 +147,22 @@ header {
 }
 
 /* FORM VALIDATIONS */
-.form-control.error input,
-.form-control2.error input{
+.form-control input.error,
+.form-control2 > input.error {
     border-color: rgba(255, 0, 0, 0.8);
 }
 
-.form-control.error input:focus,
-.form-control2.error input:focus{
+.form-control input.error:focus,
+.form-control2 > input.error:focus {
     box-shadow: rgba(255, 0, 0, 0.6) 0px 0px 0px 3px;
 }
 
-.form-control.error .validation,
-.form-control2.error .validation {
-    display: flex;
-    color: rgba(255, 0, 0, 0.8);
-    font-size: 13px;
+.form-control .validation.error,
+.form-control2 .validation.error {
+    display: block;
 }
 
-.form-control.error .validation i,
-.form-control2.error .validation i {
-   margin-right: 3px;
-}
+
 
 
 

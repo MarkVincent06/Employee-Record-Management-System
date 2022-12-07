@@ -54,12 +54,18 @@ header {
 
 .validation {
     display: none; /* displays block using js */
+    color: rgba(255, 0, 0, 0.8);
+    font-size: 14px;
 }
+
+.form-control.error .validation i {
+    margin-right: 3px;
+ } 
 
 /* IMAGES */
 .left-section img {
     width: 350px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 /* TYPOGRAPHY */
@@ -114,6 +120,7 @@ header {
     padding: 10px 10px 10px 35px;
     background: transparent;
     width: 90%;
+    caret-color: #407BFF;
 }
 
 .form-control input:focus {
@@ -155,11 +162,6 @@ header {
 
 .form-control.error .validation {
     display: block;
-    color: rgba(255, 0, 0, 0.8);
-    font-size: 14px;
 }
 
-.form-control.error .validation i {
-   margin-right: 3px;
-}
 

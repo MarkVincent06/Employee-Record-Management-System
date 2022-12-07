@@ -42,29 +42,30 @@
                         <input id="lastname-input" type="text" placeholder="Last Name" name="lastname">
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small class="validation">Please enter first name</small>
+                            <small></small>
                         </div>
                     </div>
                     <div class="form-control">
                         <input id="emp-code-input" type="text" placeholder="Employee Code" name="emp-code">
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small class="validation">Please enter first name</small>
+                            <small>Please enter first name</small>
                         </div>
                     </div>
                     <div class="form-control">
                         <input id="email-input" type="text" placeholder="Email Address" name="email">
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small class="validation">Please enter first name</small>
+                            <small>Please enter first name</small>
                         </div>
                     </div>
                     <div class="form-control2">
                         <input id="password-input" type="password" placeholder="Password" name="password">
                         <input id="repeat-password-input" type="password" placeholder="Repeat Password" name="repeat-password">
+                        <p class="password-tip">Password must contain at least 8 characters.</p>
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small class="validation">Please enter first name</small>
+                            <small>Please enter first name</small>
                         </div>
                     </div>
                     <input id="sign-up-btn" class="sign-up-btn" type="submit" value="Sign up" name="signup">
