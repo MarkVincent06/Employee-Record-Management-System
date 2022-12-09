@@ -28,7 +28,7 @@
 </head>
 <body>
     <header>
-        <img src="img/main-logo.png" alt="The main logo of this website">
+        <img class="main-logo" src="img/main-logo.png" alt="The main logo of this website">
         <h1>Employee Records Management System</h1>
     </header>
 
@@ -36,7 +36,9 @@
         <div class="sign-up-wrapper">
             <div class="left-section">
                 <h2>Sign up</h2>
-                <form class="sign-up-form" action="employee-page.php" method="POST">
+                <form class="sign-up-form" action="./crudDB/sign-up-process.php" method="POST">
+
+                    <!-- First name and last name inputs -->
                     <div class="form-control2">
                         <input id="firstname-input" type="text" placeholder="First Name" name="firstname">
                         <input id="lastname-input" type="text" placeholder="Last Name" name="lastname">
@@ -45,27 +47,33 @@
                             <small></small>
                         </div>
                     </div>
+
+                    <!-- Employee code input -->
                     <div class="form-control">
                         <input id="emp-code-input" type="text" placeholder="Employee Code" name="emp-code">
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>Please enter first name</small>
+                            <small></small>
                         </div>
                     </div>
+
+                    <!-- Email input -->
                     <div class="form-control">
                         <input id="email-input" type="text" placeholder="Email Address" name="email">
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>Please enter first name</small>
+                            <small></small>
                         </div>
                     </div>
+
+                    <!-- Password inputs -->
                     <div class="form-control2">
                         <input id="password-input" type="password" placeholder="Password" name="password">
                         <input id="repeat-password-input" type="password" placeholder="Repeat Password" name="repeat-password">
                         <p class="password-tip">Password must contain at least 8 characters.</p>
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>Please enter first name</small>
+                            <small></small>
                         </div>
                     </div>
                     <input id="sign-up-btn" class="sign-up-btn" type="submit" value="Sign up" name="signup">

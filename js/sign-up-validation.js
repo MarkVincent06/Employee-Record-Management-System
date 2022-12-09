@@ -1,16 +1,19 @@
 $(document).ready(() => {
    $("#sign-up-btn").click(e => {
+      // removes error validation
       if($(".error").length > 0) {
          $('input').removeClass('error')
          $('.validation').removeClass('error')
       }
-      // console.log($(".error").length)
+      
+      // hides password tip
+      $('.password-tip').hide()
 
       // submits the form if all the validations return true
       if( checkFirstNameAndLastName($("#firstname-input"), $("#lastname-input"))
       & checkEmpCode($("#emp-code-input")) & checkEmail($("#email-input"))
       & checkPassword($("#password-input"), $("#repeat-password-input")) ) {
-         e.preventDefault() // remove later
+         // redirects to the `login-signup-process server`
       } else {
          e.preventDefault()
       }
@@ -41,11 +44,11 @@ $(document).ready(() => {
          const empCodeInputValue = empCodeInput.val()
 
          if(empCodeInputValue === '') {
-            console.log("Enter employee code")
+            displayError(empCodeInput, "Enter employee code") 
          } else if(empCodeInputValue.length <= 8) {
-            console.log("Invalid EMP CODE")
+            displayError(empCodeInput, "This employee code is not valid")   
          } else {
-            console.log("EMP CODE ACCEPTED")
+            return true 
          }
          return false
       }
@@ -58,12 +61,12 @@ $(document).ready(() => {
          const isEmailValid = emailRegex.test(emailInputValue)
 
          if(emailInputValue === '') {
-            console.log("Enter an email address")
+            displayError(emailInput, "Enter an email address")
          } else {
-            if(isEmailValid) {
-               console.log("VALID EMAIL!") 
+            if(!isEmailValid) {
+               displayError(emailInput, "Email address is not valid")
             } else {
-               console.log("INVALID EMAIL!") 
+               return true 
             }
          }
 
@@ -76,16 +79,17 @@ $(document).ready(() => {
          const repeatPasswordInputValue = repeatPasswordInput.val()
 
          if(passwordInputValue === '') {
-            console.log("Enter a password")
+            displayError(passwordInput, "Enter a password")
          } else if(passwordInputValue.length <= 7) {
-            console.log("Password is too short. It must be at least 8 characters.")
+            displayError(passwordInput, "Password is too short. It must be at least 8 characters.")
          } else {
             if(repeatPasswordInputValue === '') {
-               console.log("Repeat your password")
+               displayError(repeatPasswordInput, "Repeat your password") 
             } else if(passwordInputValue !== repeatPasswordInputValue) {
-               console.log("Those passwords didn't match. Try again")
+               displayError(repeatPasswordInput, "Those passwords didn't match. Try again") 
+               $("#repeat-password-input").val('')
             } else {
-               console.log("SUCCESS!!!")
+               return true
             }
          }
          return false

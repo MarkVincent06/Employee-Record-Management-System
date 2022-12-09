@@ -21,7 +21,7 @@
 </head>
 <body>
     <header>
-        <img src="img/main-logo.png" alt="The main logo of this website">
+        <img class="main-logo" src="img/main-logo.png" alt="The main logo of this website">
         <h1>Employee Records Management System</h1>
     </header>
 
@@ -33,7 +33,8 @@
             </div>
             <div class="right-section">
                 <h2>Login</h2>
-                <form class="login-form" action="employee-page.php" method="POST">
+
+                <form class="login-form" action="./crudDB/login-process.php" method="POST">
                     <div class="form-control">
                         <i class="fa-solid fa-envelope"></i>
                         <input type="text" placeholder="Email" name="email">
