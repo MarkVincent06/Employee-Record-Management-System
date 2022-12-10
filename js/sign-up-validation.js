@@ -66,7 +66,7 @@ $(document).ready(() => {
             if(!isEmailValid) {
                displayError(emailInput, "Email address is not valid")
             } else {
-               return true 
+               return true // will add condition to check for existing email later
             }
          }
 

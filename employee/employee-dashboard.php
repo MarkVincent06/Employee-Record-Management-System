@@ -30,13 +30,10 @@
     <!-- LOGIN-SIGNUP-MESSAGE JS -->
     <script src="../js/login-sign-up-msg.js"></script>
 
-    <!-- EMPLOYEE_PAGE JS -->
-    <script src="js/employee-page.js"></script>
-
     <!-- SWEET ALERT CDN -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
-    <title>Document</title>
+    <title>Dashboard | Employee Record Management System</title>
 </head>
 <body>
     <!-- This session will display a message after the user logs in or signs up -->
@@ -51,8 +48,8 @@
     <aside class="sidebar">
         <header><img class="main-logo" src="../img/main-logo.png" alt="Main logo of the system">ERMS</header>
         <ul>
-            <li><a href="employee-dashboard.php"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
-            <li><a href="employee-dashboard.php"><i class="fa-solid fa-user"></i>Profile</a></li>
+            <li class="active"><a href="employee-dashboard.php"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
+            <li><a href="employee-profile.php"><i class="fa-solid fa-user"></i>Profile</a></li>
         </ul>
     </aside>
 
@@ -63,10 +60,14 @@
 
         <!-- Includes sub menu -->
         <?php include 'includes/profile-sub-menu.php'; ?>
-    </div>
+    </div>  
 
+    <!-- MAIN CONTENT -->
     <main>
-
+        <div class="greetings-wrapper">
+            <img src="img/welcome-illustration.png" alt="Three people welcoming a girl">
+            <p>Welcome, <span>Mark Vincent Cleofe👋</span></p>
+        </div>
     </main>
 
     <footer>
