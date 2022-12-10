@@ -114,7 +114,7 @@
                     <input id="email" type="text" name="email">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>Enter email</small>
+                            <small></small>
                     </div>
                 </div>
 
@@ -145,7 +145,7 @@
                     </div>
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>Enter department</small>
+                            <small></small>
                     </div>
                 </div>
 
@@ -155,7 +155,7 @@
                     <input id="job-position" type="text" name="job-position">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>Enter job position</small>
+                            <small></small>
                     </div>
                 </div>
 
@@ -165,7 +165,7 @@
                     <input id="supervisor" type="text" name="supervisor">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>Enter supervisor</small>
+                            <small></small>
                     </div>
                 </div>
 
@@ -175,7 +175,7 @@
                     <input id="hire-date" type="date" name="hire-date">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
-                            <small>This format is not valid</small>
+                            <small></small>
                     </div>
                 </div>
 
@@ -185,7 +185,7 @@
                     <input id="salary" type="number" name="salary">
                 </div>
 
-                <button id="update-btn" class="update-btn" type="button">Update profile</button>
+                <button id="update-btn" class="update-btn" type="button"></button>
 
             </div>
         </div>

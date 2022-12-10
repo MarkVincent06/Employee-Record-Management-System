@@ -76,7 +76,7 @@
                             <small></small>
                         </div>
                     </div>
-                    <input id="sign-up-btn" class="sign-up-btn" type="submit" value="Sign up" name="signup">
+                    <input id="sign-up-btn" class="sign-up-btn" type="submit" value="Sign up" name="sign-up">
                 </form>
             </div>
             <div class="right-section">

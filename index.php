@@ -17,6 +17,16 @@
     <!-- FONTAWESOME CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- JQUERY MINIFIED CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
+    </script>
+
+    <!-- LOGIN VALIDATION JS -->
+    <script src="js/login-validation.js"></script>
+
+    <!-- SWEET ALERT CDN -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
     <title>Login | Employee Record Management System</title>
 </head>
 <body>
@@ -34,10 +44,10 @@
             <div class="right-section">
                 <h2>Login</h2>
 
-                <form class="login-form" action="./crudDB/login-process.php" method="POST">
+                <form class="login-form" action="crudDB/login-process.php" method="POST">
                     <div class="form-control">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="text" placeholder="Email" name="email">
+                        <input id="email" type="text" placeholder="Email" name="email">
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small>Please enter your email</small>
@@ -45,7 +55,7 @@
                     </div>
                     <div class="form-control">
                         <i class="fa-solid fa-key"></i>
-                        <input type="password" placeholder="Password" name="password">
+                        <input id="password" type="password" placeholder="Password" name="password">
                         <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small>Please enter your password</small>

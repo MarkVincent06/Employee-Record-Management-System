@@ -1,6 +1,7 @@
 <?php
     session_start();
-    // include 'config/database.php';
+    
+    print_r($_SESSION['active-user']);
 
 ?>
 
@@ -37,11 +38,9 @@
 </head>
 <body>
     <!-- This session will display a message after the user logs in or signs up -->
-    <?php if(isset($_SESSION['sign-up-msg'])): ?>
+    <?php if(isset($_SESSION['popUpMsg'])): ?>
         <!-- THIS HIDDEN INPUT WILL BE USED IN JS -->
-        <input id="hidden-input" type="hidden" value="<?php echo $_SESSION['sign-up-msg']; unset($_SESSION['sign-up-msg']); ?>">
-    <?php elseif(isset($_SESSION['login-msg'])): ?>
-        <input id="hidden-input" type="hidden" value="<?php echo $_SESSION['login-msg']; unset($_SESSION['login-msg']); ?>">
+        <input id="hidden-input" type="hidden" value="<?php echo $_SESSION['popUpMsg']; unset($_SESSION['popUpMsg']); ?>">
     <?php endif ?>
     
     <!-- SIDEBAR -->

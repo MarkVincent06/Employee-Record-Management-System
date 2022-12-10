@@ -3,12 +3,9 @@ $(document).ready(() => {
     const message = $("#hidden-input").val()
 
     // Shows message using sweet alert package
-    if(message === 'Signed up successfully!') {
-        showSuccessMsg(message)
-    } else if(message === 'Logged in successfully!') {
+    if(message) {
         showSuccessMsg(message)
     }
-
 
     function showSuccessMsg(titleMsg) {
         const Toast = Swal.mixin({

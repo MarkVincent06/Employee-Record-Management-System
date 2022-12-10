@@ -5,7 +5,7 @@
             <p>Change Password</p>
         </a>
 
-        <a href="#" class="sub-menu-link">
+        <a href="../logout.php" class="sub-menu-link">
             <i class="fa-solid fa-right-from-bracket"></i>
             <p>Logout</p>
         </a>
