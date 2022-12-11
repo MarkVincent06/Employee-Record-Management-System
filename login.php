@@ -24,6 +24,9 @@
     <!-- LOGIN VALIDATION JS -->
     <script src="js/login-validation.js"></script>
 
+    <!-- ADMIN LOGIN JS -->
+    <script src="js/admin-login.js"></script>
+
     <!-- SWEET ALERT CDN -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
@@ -64,6 +67,11 @@
                     <a href="sign-up.php" class="forgot-pass-link">Forgot Password?</a>
                     <input class="login-btn" type="submit" value="Login" name="login">
                 </form>
+            </div>
+
+            <!-- ADMIN -->
+            <div id="admin" class="admin-wrapper">
+                <i class="fa-solid fa-user-gear"></i>
             </div>
         </div>
     </main>

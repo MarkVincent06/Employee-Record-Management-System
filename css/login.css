@@ -37,6 +37,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    position: relative;
 }
 
 .left-section {
@@ -46,6 +47,17 @@ header {
 .right-section {
     width: 100%;
     margin-left: 20px;
+}
+
+.admin-wrapper {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 0;
+    left: 0;
+    color: #407BFF;
+    margin: 15px 0 0px 20px;
+    cursor: pointer;
+    transition: opacity .2s;
 }
 
 .form-control {
@@ -132,6 +144,23 @@ header {
     border-color: #407BFF;
 }
 
+.admin-input {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #00000040;
+    border-radius: 3px;
+    width: 70%;
+    padding: 15px;
+    background: transparent;
+    caret-color: #407BFF;
+}
+
+.admin-input:focus {
+    outline: none;
+    border: 1px solid rgba(59, 119, 215, 0.5);
+    box-shadow: rgba(59, 119, 215, .4) 0px 0px 0px 3px;
+}
+
 /* BUTTONS */
 .login-btn {
     border-radius: 3px;
@@ -146,26 +175,33 @@ header {
 }
 
 /* HOVERS AND ACTIVES */
-
 .login-btn:hover,
 .sign-up-linkhover ,
-.forgot-pass-link:hover {
+.forgot-pass-link:hover,
+.admin-wrapper:hover  {
     opacity: 0.8;
 }
 
 .login-btn:active,
 .sign-up-link:active,
-.forgot-pass-link:active {
+.forgot-pass-link:active,
+.admin-wrapper:active  {
     opacity: 0.6;
 }
 
 /* FORM VALIDATIONS */
-.form-control.error input {
+.form-control.error input,
+.admin-input.error {
     border-color: rgba(255, 0, 0, 0.8);
 }
 
-.form-control.error .validation {
-    display: block;
+.admin-input.error:focus {
+    box-shadow: rgba(255, 0, 0, 0.6) 0px 0px 0px 3px;
 }
+
+.form-control.error .validation {
+    display: block !important;
+}
+
 
 
