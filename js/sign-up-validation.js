@@ -45,10 +45,30 @@ $(document).ready(() => {
 
          if(empCodeInputValue === '') {
             displayError(empCodeInput, "Enter employee code") 
-         } else if(empCodeInputValue.length <= 8) {
+         } else if(empCodeInputValue.length <= 6) {
             displayError(empCodeInput, "This employee code is not valid")   
          } else {
-            return true 
+            let isEmpCodeUnique = true 
+
+            // using ajax to fetch the employee code data from the database
+            $.ajax({
+               url: './crudDB/getEmpCodeData.php',
+               method: 'POST',
+               async: false,
+               success: response => {
+                  empCodeData = JSON.parse(response)
+                  
+                  for(let account of empCodeData) {
+                     if(account.emp_code === empCodeInputValue) {
+                           isEmpCodeUnique = false
+                           displayError(empCodeInput, "This employee code is already taken")
+                           break
+                     }
+                  }
+               }
+            })
+
+            return isEmpCodeUnique ? true : false
          }
          return false
       }
@@ -66,7 +86,27 @@ $(document).ready(() => {
             if(!isEmailValid) {
                displayError(emailInput, "Email address is not valid")
             } else {
-               return true // will add condition to check for existing email later
+               let isEmailUnique = true 
+
+               // using ajax to fetch the email and password data from the database
+               $.ajax({
+                  url: './crudDB/getEmailAndPassData.php',
+                  method: 'POST',
+                  async: false,
+                  success: response => {
+                     emailAndPassData = JSON.parse(response)
+                     
+                     for(let account of emailAndPassData) {
+                        if(account.email === emailInputValue) {
+                              isEmailUnique = false
+                              displayError(emailInput, "This email address is already taken")
+                              break
+                        }
+                     }
+                  }
+               })
+
+               return isEmailUnique ? true : false
             }
          }
 

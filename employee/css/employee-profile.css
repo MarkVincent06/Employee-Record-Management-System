@@ -252,13 +252,13 @@ main {
     border-radius: 5px;
     outline: 0;
     letter-spacing: .5px;
-    cursor: pointer;
 }
 
 select {
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;
+    cursor: pointer;
 }
 
 .form-control input:focus, select:focus {

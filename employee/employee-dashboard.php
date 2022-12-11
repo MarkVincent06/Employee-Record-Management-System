@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    print_r($_SESSION['active-user']);
+    // print_r($_SESSION['active-user']);
 
 ?>
 

@@ -7,8 +7,23 @@ $(document).ready(() => {
         if ( validateFirstName($("#firstname")) & validateLastName($("#lastname")) & validateDateOfBirth($("#date-of-birth")) &
         validateEmail($("#email")) & validateDept($("#department")) & validateJobPos($("#job-position")) &
         validateSupervisor($("#supervisor")) & validateHireData($("#hire-date")) ) {
-            // perform ajax later
-            console.log("SUCCESS")
+            $.ajax({
+                url: '../crudDB/updateEmployeeData.php',
+                method: 'POST',
+                data: {
+                        updateProfile: "Update profile", id: $("#hiddenActiveUserId").val(), 
+                        firstname: $("input#firstname").val(), lastname: $("input#lastname").val(),
+                        dateOfBirth: $("#date-of-birth").val(), gender: $("#gender").val(),
+                        email: $("#email").val(),  phone: $("#phone").val(),
+                        department: $("#department").val(), jobPosition: $("#job-position").val(),
+                        supervisor: $("#supervisor").val(), hireDate: $("#hire-date").val(),
+                        salary: $("#salary").val()
+                    },  
+                success: response => {
+                    // if successful, it will redirect to the updateEmployeeData server and update the values in the db
+                    window.location.reload()
+                }
+            })
         }
         
         // validates first name
@@ -66,7 +81,27 @@ $(document).ready(() => {
                   displayError(emailInput, "The email address you entered is not valid. Please enter a valid email address.")
                   return false
                } else {
-                  return true // will add condition to check for existing email later
+                    let isEmailUnique = true 
+
+                    // using ajax to fetch the email and password data from the database
+                    $.ajax({
+                    url: '../crudDB/getEmailAndPassData.php',
+                    method: 'POST',
+                    async: false,
+                    success: response => {
+                        emailAndPassData = JSON.parse(response)
+                        
+                        for(let account of emailAndPassData) {
+                            if(account.email === emailInput.val()) {
+                                isEmailUnique = false
+                                displayError(emailInput, "This email address is already taken")
+                                break
+                            }
+                        }
+                    }
+                    })
+    
+                    return isEmailUnique ? true : false
                }
             }
    

@@ -1,0 +1,1 @@
+create a database named "im_ermsdb" annd import the sql file

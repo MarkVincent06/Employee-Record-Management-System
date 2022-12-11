@@ -81,7 +81,7 @@
             </div>
             <div class="right-section">
                 <img src="img/sign-up/sign-up-illustration.png" alt="Guy using a gint smartphone">
-                <p> Already have an account? <a href="index.php" class="login-link">Login</a></p>
+                <p> Already have an account? <a href="login.php" class="login-link">Login</a></p>
             </div>
         </div>
     </main>

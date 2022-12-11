@@ -1,5 +1,9 @@
 <?php
-    // include 'config/database.php';
+    session_start();
+
+    if(isset($_SESSION['active-user'])) {
+        include 'includes/refreshEmployeeSession.php';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,12 +32,20 @@
     <!-- EMPLOYEE PROFILE VALIDATION JS -->
     <script src="js/employee-profile-validation.js"></script>
 
+    <!-- SHOW SUCCESS TOAST MESSAGE JS -->
+    <script src="js/showSuccessToastMsg.js"></script>
+
     <!-- SWEET ALERT CDN -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
     <title>Profile | Employee Record Management System</title>
 </head>
 <body>
+    <!-- This session will display a message after the user updates his/her profile -->
+    <?php if(isset($_SESSION['successToastMsg'])): ?>
+        <!-- THIS HIDDEN INPUT WILL BE USED IN JS -->
+        <input id="hiddenToastMsg" type="hidden" value="<?php echo $_SESSION['successToastMsg']; unset($_SESSION['successToastMsg']); ?>">
+    <?php endif ?>
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
@@ -65,10 +77,13 @@
                 <!-- PERSONAL DETAILS -->
                 <h3>Personal Details</h3>
 
+                <!-- This hidden input is the id of the active user and will be used to update the db -->
+                <input id="hiddenActiveUserId" type="hidden" value="<?php echo $id ?>">
+
                 <!-- First name -->
                 <div class="form-control">
                     <label for="firstname">First name*</label>
-                    <input id="firstname" type="text" name="firstname">
+                    <input id="firstname" type="text" name="firstname" value="<?php echo $firstname ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -78,7 +93,7 @@
                 <!-- Last name -->
                 <div class="form-control">
                     <label for="lastname">Last name*</label>
-                    <input id="lastname" type="text" name="lastname">
+                    <input id="lastname" type="text" name="lastname" value="<?php echo $lastname ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -88,7 +103,7 @@
                 <!-- Date of birth -->
                 <div class="form-control">
                     <label for="date-of-birth">Date of birth*</label>
-                    <input id="date-of-birth" type="date" name="date-of-birth">
+                    <input id="date-of-birth" type="date" name="date-of-birth" value="<?php echo $dateOfBirth ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -100,9 +115,15 @@
                     <label for="gender">Gender</label>
                     <div class="select-wrapper">
                         <select id="gender">
-                            <option value="">Select your gender...</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="" <?php if($gender == "") { echo ' selected="selected"'; } ?> >
+                            Select your gender...
+                            </option>
+                            <option value="Male" <?php if($gender == "Male") { echo ' selected="selected"'; } ?>>
+                                Male
+                            </option>
+                            <option value="Female" <?php if($gender == "Female") { echo ' selected="selected"'; } ?>>
+                                Female
+                            </option>
                         </select>
                         <i class="fa-solid fa-caret-down"></i>
                     </div>
@@ -111,7 +132,7 @@
                 <!-- Email -->
                 <div class="form-control">
                     <label for="email">Email address*</label>
-                    <input id="email" type="text" name="email">
+                    <input id="email" type="text" name="email" value="<?php echo $email ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -121,7 +142,7 @@
                 <!-- Phone -->
                 <div class="form-control">
                     <label for="phone">Phone number</label>
-                    <input id="phone" type="number" name="phone">
+                    <input id="phone" type="number" name="phone" value="<?php echo $phone ?>" >
                 </div>
 
                 <!-- EMPLOYMENT DETAILS -->
@@ -130,7 +151,7 @@
                 <!-- Employee code -->
                 <div class="form-control">
                     <label for="emp-code">Employee code</label>
-                    <input id="emp-code" value="C21102324" type="text" name="emp-code" disabled>
+                    <input id="emp-code" type="text" name="emp-code" value="<?php echo $empCode ?>" disabled>
                 </div>
 
                 <!-- Department -->
@@ -152,7 +173,7 @@
                 <!-- Job position -->
                 <div class="form-control">
                     <label for="job-position">Job position*</label>
-                    <input id="job-position" type="text" name="job-position">
+                    <input id="job-position" type="text" name="job-position" value="<?php echo $jobPosition ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -162,7 +183,7 @@
                 <!-- Supervisor -->
                 <div class="form-control">
                     <label for="supervisor">Supervisor*</label>
-                    <input id="supervisor" type="text" name="supervisor">
+                    <input id="supervisor" type="text" name="supervisor" value="<?php echo $supervisor ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -172,7 +193,7 @@
                 <!-- Hire date -->
                 <div class="form-control">
                     <label for="hire-date">Hire-date*</label>
-                    <input id="hire-date" type="date" name="hire-date">
+                    <input id="hire-date" type="date" name="hire-date" value="<?php echo $hireDate ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -182,10 +203,10 @@
                 <!-- Salary -->
                 <div class="form-control">
                     <label for="salary">Salary</label>
-                    <input id="salary" type="number" name="salary">
+                    <input id="salary" type="number" name="salary" value="<?php echo $salary ?>"> 
                 </div>
 
-                <button id="update-btn" class="update-btn" type="button"></button>
+                <button id="update-btn" class="update-btn" type="button">Update Profile</button>
 
             </div>
         </div>
