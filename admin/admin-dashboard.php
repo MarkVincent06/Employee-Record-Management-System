@@ -18,6 +18,7 @@
 
     <!-- CSS LINKS -->
     <link rel="stylesheet" href="css/admin-dashboard.css">
+    <link rel="stylesheet" href="css/global.css">
 
     <!-- FONTAWESOME CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -45,24 +46,41 @@
     <aside class="sidebar">
         <header><img class="main-logo" src="../img/main-logo.png" alt="Main logo of the system">ERMS Admin</header>
         <ul>
-            <li class="active"><a href="employee-dashboard.php"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
-            <li><a href="#"><i class="fa-solid fa-building"></i>Department</a></li>
-            <li><a href="#"><i class="fa-solid fa-user-tie"></i>Employee</a></li>
+            <li class="active"><a href="admin-dashboard.php"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
+            <li><a href="admin-department.php"><i class="fa-solid fa-building"></i>Department</a></li>
+            <li><a href="admin-employee.php"><i class="fa-solid fa-user-tie"></i>Employee</a></li>
         </ul>
     </aside>
 
-    <!-- PROFILE BAR -->
-    <div class="profile-bar">
-        <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $_SESSION['active-user'] ?></p>
-        <img class="avatar"src="img/admin-avatar.png" alt="An avatar of an admin" onclick="toggleSubMenu()">
-
-        <!-- Includes sub menu -->
-        <?php include 'includes/admin-sub-menu.php'; ?>
-    </div>  
-
     <!-- MAIN CONTENT -->
     <main>
+        <header>
+            <div class="profile-bar">
+                <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $_SESSION['active-user'] ?></p>
+                <img class="avatar"src="img/admin-avatar.png" alt="An avatar of an admin" onclick="toggleSubMenu()">
         
+                <!-- Includes sub menu -->
+                <?php include 'includes/admin-sub-menu.php'; ?>
+            </div>  
+        </header>
+        
+        <div class="dashboard-content">
+            <header class="dashboard-header">
+                <h1>Dashboard</h1>
+            </header>
+            <div class="statistics">
+                <div class="department">
+                    <h2>5</h2>
+                    <i class="fa-solid fa-building"></i>
+                    <p>Department/s</p>
+                </div>
+                <div class="employee">
+                    <h2>10</h2>
+                    <i class="fa-solid fa-users"></i>
+                    <p>Employee/s</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>

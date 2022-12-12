@@ -1,0 +1,113 @@
+/* Dashboard content */
+
+/* LAYOUT */
+.dashboard-content {
+    padding: 10px 0px;
+    height: 100vh;
+}
+
+.dashboard-header {
+    margin: 10px 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px 30px;
+}
+
+.add-btn-wrapper {
+    position: relative;
+    color: whitesmoke
+}
+
+.add-btn-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    z-index: 10;
+}
+
+/* TYPOGRAPHY */
+.dashboard-header h1 {
+    font-size: 1.6rem;
+    color: #219ebc;
+}
+
+/* BUTTONS */
+.add-btn,
+.edit-btn,
+.delete-btn {
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-size: 13px;
+    cursor: pointer;
+    transition: opacity .3s;
+}
+
+.add-btn {
+    padding: 15px 24px;
+    padding-left: 40px !important;
+    background: #219ebc;
+}
+
+.edit-btn {
+    padding: 10px 20px;
+    background-color: rgb(34, 208, 34);
+}   
+
+.delete-btn {
+    padding: 10px 20px;
+    background-color: rgb(206, 28, 28);
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    opacity: 0.6;
+}
+
+/* TABLE */
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 20px;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: #219ebc;
+    color: whitesmoke;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+
+}
+
+.content-table tbody tr {
+     border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #219ebc;
+}
+
+.content-table tbody tr .table-data-btns {
+    display: flex;
+    align-items: center !important;
+    gap: 10px;
+}
