@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+    // gets all the data of department from db
+    include 'crudDB/getDepartmentData.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -27,13 +30,21 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous">
     </script>
 
+    <!-- SUCCESS-TOAST-MESSAGE JS -->
+    <script src="js/showSuccessToastMsg.js"></script>
+
     <!-- SWEET ALERT CDN -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
     <title>Department | Employee Record Management System</title>
 </head>
-<body>
-    
+<body>  
+    <!-- This session will display a toast message -->
+    <?php if(isset($_SESSION['successToastMsg'])): ?>
+    <!-- THIS HIDDEN INPUT WILL BE USED IN JS -->
+    <input id="hiddenToastMsg" type="hidden" value="<?php echo $_SESSION['successToastMsg']; unset($_SESSION['successToastMsg']); ?>">
+    <?php endif ?>
+
     <!-- SIDEBAR -->
     <aside class="sidebar">
         <header><img class="main-logo" src="../img/main-logo.png" alt="Main logo of the system">ERMS Admin</header>
@@ -48,7 +59,7 @@
     <main>
         <header>
             <div class="profile-bar">
-                <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $_SESSION['active-user'] ?></p>
+                <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $_SESSION['admin-active-user'] ?></p>
                 <img class="avatar"src="img/admin-avatar.png" alt="An avatar of an admin" onclick="toggleSubMenu()">
         
                 <!-- Includes sub menu -->
@@ -82,76 +93,25 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td class="table-data-btns">
-                                <button class="edit-btn">Edit</button>
-                                <button class="delete-btn">Delete</button>
-                            </td>
-                            <td>1</td>
-                            <td>Engineering</td>
-                            <td>A department that focuses on the design, construction, and operation of various systems, structures, and machines.</td>
-                            <td>Bob Marley</td>
-                            <td>3</td>
-                            <td>Polangui, Albay</td>
-                            <td>2022-12-09 16:52:29</td>
-                        </tr>
-
-                        <tr>
-                            <td class="table-data-btns">
-                                <button class="edit-btn">Edit</button>
-                                <button class="delete-btn">Delete</button>
-                            </td>
-                            <td>2</td>
-                            <td>Accounting</td>
-                            <td>A department that is typically responsible for maintaining and analyzing an organization's financial records. </td>
-                            <td>Bruno Mars</td>
-                            <td>6</td>
-                            <td>Nabua, Camarine Sur</td>
-                            <td>2022-12-04 16:52:29</td>
-                        </tr>
-
-                        <tr>
-                            <td class="table-data-btns">
-                                <button class="edit-btn">Edit</button>
-                                <button class="delete-btn">Delete</button>
-                            </td>
-                            <td>3</td>
-                            <td>Marketing</td>
-                            <td>A department that is typically responsible for generating revenue for an organization by selling products or services to customers.</td>
-                            <td>Gary Montero</td>
-                            <td>4</td>
-                            <td>Buhi, Camarines Sur</td>
-                            <td>2022-11-09 16:52:29</td>
-                        </tr>
-
-                        <tr>
-                            <td class="table-data-btns">
-                                <button class="edit-btn">Edit</button>
-                                <button class="delete-btn">Delete</button>
-                            </td>
-                            <td>3</td>
-                            <td>Marketing</td>
-                            <td>A department that is typically responsible for generating revenue for an organization by selling products or services to customers.</td>
-                            <td>Gary Montero</td>
-                            <td>4</td>
-                            <td>Buhi, Camarines Sur</td>
-                            <td>2022-11-09 16:52:29</td>
-                        </tr>
-
-                        <tr>
-                            <td class="table-data-btns">
-                                <button class="edit-btn">Edit</button>
-                                <button class="delete-btn">Delete</button>
-                            </td>
-                            <td>3</td>
-                            <td>Marketing</td>
-                            <td>A department that is typically responsible for generating revenue for an organization by selling products or services to customers.</td>
-                            <td>Gary Montero</td>
-                            <td>4</td>
-                            <td>Buhi, Camarines Sur</td>
-                            <td>2022-11-09 16:52:29</td>
-                        </tr>
-
+                        <?php foreach($departmentData as $key=>$department): ?>
+                            <tr>
+                                <td class="table-data-btns">
+                                    <a href="add-edit-department/edit-department.php?id=<?php echo $department['dept_id'] ?>">
+                                        <button class="edit-btn">Edit</button>
+                                    </a> 
+                                    <a href="crudDB/deleteDepartmentData.php?id=<?php echo $department['dept_id'] ?>">
+                                        <button class="delete-btn">Delete</button>
+                                    </a>
+                                </td>
+                                <td><?php echo $key+1; ?></td>
+                                <td><?php echo $department['dept_name']; ?></td>
+                                <td><?php echo $department['dept_description']; ?></td>
+                                <td><?php echo $department['supervisor']; ?></td>
+                                <td><?php echo $department['emp_count']; ?></td>
+                                <td><?php echo $department['location']; ?></td>
+                                <td><?php echo $department['created_at']; ?></td>
+                            </tr>
+                        <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

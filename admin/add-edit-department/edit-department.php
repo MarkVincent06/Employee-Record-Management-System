@@ -1,5 +1,30 @@
 <?php
     session_start();
+
+    $department;
+
+    if(isset($_GET['id'])) {
+        include '../config/database.php';
+
+        $id = htmlspecialchars($_GET['id']);
+
+        $sql = "SELECT * FROM department WHERE dept_id = '$id'";
+        // $result = mysqli_query($conn, $sql);
+        // $department = mysqli_fetch_assoc($result, MYSQLI_ASSOC);
+
+        if(!mysqli_query($conn, $sql)) {
+            die("Query error: " . mysqli_error($conn));
+        } else {
+            $result = mysqli_query($conn, $sql);
+            $department = mysqli_fetch_assoc($result);
+        }
+
+        // Free result set
+        mysqli_free_result($result);
+
+        // closing the connection to the db
+        mysqli_close($conn);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +41,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- CSS LINKS -->
-    <link rel="stylesheet" href="css/add-department.css">
+    <link rel="stylesheet" href="css/edit-department.css">
     <link rel="stylesheet" href="../css/global.css">
 
     <!-- FONTAWESOME CDN -->
@@ -32,7 +57,7 @@
     <!-- SWEET ALERT CDN -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
-    <title>Add Department | Employee Record Management System</title>
+    <title>Edit Department | Employee Record Management System</title>
 </head>
 <body>
     
@@ -69,10 +94,13 @@
 
             <div class="form-wrapper">
 
+                <!-- This hidden input is the id of the department and will be used to update the db -->
+                <input id="hiddenIdInput" type="hidden" value="<?php echo $department['dept_id'] ?>">
+
                 <!-- Department name -->
                 <div class="form-control">
                     <label for="dept-name">Department name*</label>
-                    <input id="dept-name" type="text" name="dept-name">
+                    <input id="dept-name" type="text" name="dept-name" value="<?php echo $department['dept_name'] ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -82,7 +110,7 @@
                 <!-- Department description -->
                 <div class="form-control">
                     <label for="dept-desc">Department description*</label>
-                    <textarea name="dept-desc" id="dept-desc" cols="30" rows="4" placeholder="Short description about the department..." maxlength="200"></textarea>
+                    <textarea name="dept-desc" id="dept-desc" cols="30" rows="4" placeholder="Short description about the department..." maxlength="200"><?php echo $department['dept_description'] ?></textarea>
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -92,7 +120,7 @@
                 <!-- Supervisor -->
                 <div class="form-control">
                     <label for="supervisor">Supervisor*</label>
-                    <input id="supervisor" type="text" name="supervisor">
+                    <input id="supervisor" type="text" name="supervisor" value="<?php echo $department['supervisor'] ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -102,14 +130,14 @@
                 <!-- Location -->
                 <div class="form-control">
                     <label for="location">Location*</label>
-                    <input id="location" type="text" name="location">
+                    <input id="location" type="text" name="location" value="<?php echo $department['location'] ?>">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
                     </div>
                 </div>
                 
-                <button type="submit" class="add-btn">Add Department</button>
+                <button type="submit" class="update-btn">Update Department</button>
             </div>
     
         </div>

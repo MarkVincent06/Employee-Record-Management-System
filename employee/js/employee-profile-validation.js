@@ -81,27 +81,27 @@ $(document).ready(() => {
                   displayError(emailInput, "The email address you entered is not valid. Please enter a valid email address.")
                   return false
                } else {
-                    let isEmailUnique = true 
+                    // let isEmailUnique = true 
 
-                    // using ajax to fetch the email and password data from the database
-                    $.ajax({
-                    url: '../crudDB/getEmailAndPassData.php',
-                    method: 'POST',
-                    async: false,
-                    success: response => {
-                        emailAndPassData = JSON.parse(response)
+                    // // using ajax to fetch the email and password data from the database
+                    // $.ajax({
+                    // url: '../crudDB/getEmailAndPassData.php',
+                    // method: 'POST',
+                    // async: false,
+                    // success: response => {
+                    //     emailAndPassData = JSON.parse(response)
                         
-                        for(let account of emailAndPassData) {
-                            if(account.email === emailInput.val()) {
-                                isEmailUnique = false
-                                displayError(emailInput, "This email address is already taken")
-                                break
-                            }
-                        }
-                    }
-                    })
+                    //     for(let account of emailAndPassData) {
+                    //         if(account.email === emailInput.val()) {
+                    //             isEmailUnique = false
+                    //             displayError(emailInput, "This email address is already taken")
+                    //             break
+                    //         }
+                    //     }
+                    // }
+                    // })
     
-                    return isEmailUnique ? true : false
+                    // return isEmailUnique ? true : false
                }
             }
    

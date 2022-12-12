@@ -3,7 +3,11 @@
 
     if(isset($_SESSION['active-user'])) {
         include 'includes/refreshEmployeeSession.php';
+
+        // gets all the data of department from db
+        include '../crudDB/getDepartmentData.php';
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +62,7 @@
 
     <!-- PROFILE BAR -->
     <div class="profile-bar">
-        <p class="profile-name" onclick="toggleSubMenu()" >Mark Vincent Cleofe</p>
+        <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $firstname . " " . $lastname?></p>
         <img class="avatar"src="img/default-employee-avatar.png" alt="An avatar of an employee" onclick="toggleSubMenu()">
 
         <!-- Includes sub menu -->
@@ -160,7 +164,11 @@
                     <div class="select-wrapper">
                         <select id="department">
                             <option value="">Select your department...</option>
-                            <option value="Engineering">Engineering</option>
+                            <?php foreach($departmentData as $department): ?>
+                                <option value="<?php echo $department['dept_name'] ?>" >
+                                    <?php echo $department['dept_name'] ?>
+                                </option>
+                            <?php endforeach ?>
                         </select>
                         <i class="fa-solid fa-caret-down"></i>
                     </div>

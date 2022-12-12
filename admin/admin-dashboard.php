@@ -1,6 +1,12 @@
 <?php
     session_start();
 
+    // gets all the data of department from db
+    include 'crudDB/getDepartmentData.php';
+
+    // gets all the data of employee from db
+    include 'crudDB/getEmployeeData.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +62,7 @@
     <main>
         <header>
             <div class="profile-bar">
-                <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $_SESSION['active-user'] ?></p>
+                <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $_SESSION['admin-active-user'] ?></p>
                 <img class="avatar"src="img/admin-avatar.png" alt="An avatar of an admin" onclick="toggleSubMenu()">
         
                 <!-- Includes sub menu -->
@@ -70,12 +76,12 @@
             </header>
             <div class="statistics">
                 <div class="department">
-                    <h2>5</h2>
+                    <h2><?php echo count($departmentData) ?></h2>
                     <i class="fa-solid fa-building"></i>
                     <p>Department/s</p>
                 </div>
                 <div class="employee">
-                    <h2>10</h2>
+                    <h2><?php echo count($employeeData) ?></h2>
                     <i class="fa-solid fa-users"></i>
                     <p>Employee/s</p>
                 </div>

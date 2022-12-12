@@ -1,7 +1,9 @@
 <?php
     session_start();
     
-    // print_r($_SESSION['active-user']);
+    if(isset($_SESSION['active-user'])) {
+        include 'includes/refreshEmployeeSession.php';
+    }
 
 ?>
 
@@ -54,7 +56,7 @@
 
     <!-- PROFILE BAR -->
     <div class="profile-bar">
-        <p class="profile-name" onclick="toggleSubMenu()" >Mark Vincent Cleofe</p>
+        <p class="profile-name" onclick="toggleSubMenu()" ><?php echo $firstname . " " . $lastname?></p>
         <img class="avatar"src="img/default-employee-avatar.png" alt="An avatar of an employee" onclick="toggleSubMenu()">
 
         <!-- Includes sub menu -->
@@ -65,7 +67,7 @@
     <main>
         <div class="greetings-wrapper">
             <img src="img/welcome-illustration.png" alt="Three people welcoming a girl">
-            <p>Welcome, <span>Mark Vincent Cleofe👋</span></p>
+            <p>Welcome, <span><?php echo $firstname . " " . $lastname?>👋</span></p>
         </div>
     </main>
 

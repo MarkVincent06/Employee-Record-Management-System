@@ -21,6 +21,7 @@
         $hireDate = htmlspecialchars($_POST['hireDate']);
         $salary = htmlspecialchars($_POST['salary']);
         
+        // updates employee data
         $sql = "UPDATE employee 
         SET firstname = '$firstname', lastname = '$lastname', date_of_birth = '$dateOfBirth', gender = '$gender',
         email = '$email', phone = '$phone', department = '$department', job_position = '$jobPosition',
@@ -29,8 +30,26 @@
         
         if(!mysqli_query($conn, $sql)) {
             die("Query error: " . mysqli_error($conn));
+        } else {
+            // this will update the department data after updating the employee data
+
+            // selecting first the no. of employee/s 
+            $sql = "SELECT employee.* FROM employee INNER JOIN department ON employee.department = department.dept_name
+            AND employee.supervisor = department.supervisor;";
+            $result = mysqli_query($conn, $sql);
+            $noOfEmpRows = mysqli_num_rows($result);
+          
+            if($noOfEmpRows > 0) {
+                // this will update the emp count of dept table       
+                $sql = "UPDATE department SET emp_count = $noOfEmpRows WHERE dept_name = \'$department\' AND supervisor = \'$supervisor\';";
+            }
+
+            // Free result set
+            mysqli_free_result($result);
+
+            // closing the connection to the db
+            mysqli_close($conn);
         }
 
-        // closing the connection to the db
-        mysqli_close($conn);
+        
     } 
