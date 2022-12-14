@@ -71,7 +71,7 @@
 
                 <!-- Department name -->
                 <div class="form-control">
-                    <label for="dept-name">Department name*</label>
+                    <label for="dept-name">Department name</label>
                     <input id="dept-name" type="text" name="dept-name">
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
