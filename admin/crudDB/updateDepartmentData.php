@@ -3,7 +3,7 @@
 
     include '../config/database.php';
     
-    // INSERTS A NEW DEPARTMENT AT THE DB
+    // UPDATES A DEPARTMENT AT THE DB
     if(isset($_POST['updateDeptData'])) {
         // this will show a success message in the next page
         $_SESSION['successToastMsg'] = "A department has been updated successfully!";

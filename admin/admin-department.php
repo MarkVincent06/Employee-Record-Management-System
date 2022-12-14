@@ -86,7 +86,6 @@
                             <th>Department Name</th>
                             <th>Department Description</th>
                             <th>Supervisor</th>
-                            <th>Employee Count</th>
                             <th>Location</th>
                             <th>Creation Date</th>
                         </tr>
@@ -107,7 +106,6 @@
                                 <td><?php echo $department['dept_name']; ?></td>
                                 <td><?php echo $department['dept_description']; ?></td>
                                 <td><?php echo $department['supervisor']; ?></td>
-                                <td><?php echo $department['emp_count']; ?></td>
                                 <td><?php echo $department['location']; ?></td>
                                 <td><?php echo $department['created_at']; ?></td>
                             </tr>
@@ -117,10 +115,6 @@
             </div>
         </div>
     </main>
-
-    <footer>
-
-    </footer>
 
 </body>
 </html>

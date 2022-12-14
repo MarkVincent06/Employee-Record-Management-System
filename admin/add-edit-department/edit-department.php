@@ -9,9 +9,7 @@
         $id = htmlspecialchars($_GET['id']);
 
         $sql = "SELECT * FROM department WHERE dept_id = '$id'";
-        // $result = mysqli_query($conn, $sql);
-        // $department = mysqli_fetch_assoc($result, MYSQLI_ASSOC);
-
+  
         if(!mysqli_query($conn, $sql)) {
             die("Query error: " . mysqli_error($conn));
         } else {
@@ -99,8 +97,8 @@
 
                 <!-- Department name -->
                 <div class="form-control">
-                    <label for="dept-name">Department name*</label>
-                    <input id="dept-name" type="text" name="dept-name" value="<?php echo $department['dept_name'] ?>">
+                    <label for="dept-name">Department name</label>
+                    <input id="dept-name" type="text" name="dept-name" value="<?php echo $department['dept_name'] ?>" disabled>
                     <div class="validation">
                             <i class="fa-solid fa-circle-exclamation"></i>
                             <small></small>
@@ -142,10 +140,6 @@
     
         </div>
     </main>
-
-    <footer>
-
-    </footer>
 
 </body>
 </html>

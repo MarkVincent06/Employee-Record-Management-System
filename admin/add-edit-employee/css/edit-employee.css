@@ -27,11 +27,16 @@
     z-index: 10;
 }
 
-.form-wrapper {
-    margin: 20px auto;
-    background: white;
+.form-outer-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-inner-wrapper {
+    margin: 0 20px 0 20px;
     width: 80%;
-    padding: 30px;
+    background: white;
+    padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 5px;
     overflow-x: hidden;
@@ -40,7 +45,7 @@
 .form-control {
     display: grid;
     align-items: center;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 30% 70%;
     margin: 20px 30px;
 }
 
@@ -48,10 +53,22 @@
     display: none;
     grid-column: span 2;
     width: 100%;
-    margin: 5px 225px;
+    margin: 1px 145px;
     font-size: 14px;
     color: rgba(255, 0, 0, 0.8);
     overflow: hidden;
+}
+
+.select-wrapper {
+    position: relative;    
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.select-wrapper i {
+    position: absolute;
+    right: 30px;
+    top: 12px;
 }
 
 /* TYPOGRAPHY */
@@ -76,7 +93,7 @@
 
 /* BUTTONS */
 .back-btn,
-.update-btn {
+.edit-btn{
     font-weight: bold;
     border: none;
     border-radius: 5px;
@@ -92,7 +109,7 @@
     background-color: grey;
 }
 
-.update-btn {
+.edit-btn{
     background: #219ebc;
     padding: 10px 20px;
     margin-right: 30px;
@@ -109,7 +126,7 @@ button:active {
 
 /* INPUTS */
 .form-control input,
-.form-control textarea {
+.form-control select {
     padding: 12px 24px 12px 15px;
     border: 1px solid #00000050;
     background: transparent;
@@ -119,14 +136,17 @@ button:active {
     letter-spacing: .5px;
 }
 
-.form-control input:focus,
-.form-control textarea:focus {
-    border: 1px solid rgba(59, 119, 215, 0.5);
-    box-shadow: rgba(59, 119, 215, .4) 0px 0px 0px 3px;
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
 }
 
-.form-control textarea {
-    resize: none;
+.form-control input:focus,
+.form-control select:focus {
+    border: 1px solid rgba(59, 119, 215, 0.5);
+    box-shadow: rgba(59, 119, 215, .4) 0px 0px 0px 3px;
 }
 
 .form-control input:disabled {
@@ -135,12 +155,12 @@ button:active {
 
 /* FORM VALIDATIONS */
 .form-control.error input,
-.form-control.error textarea {
+.form-control.error select {
     border-color: rgba(255, 0, 0, 0.8);
 }
 
 .form-control.error input:focus,
-.form-control.error textarea:focus {
+.form-control.error select:focus {
     box-shadow: rgba(255, 0, 0, 0.6) 0px 0px 0px 3px;
 }
 

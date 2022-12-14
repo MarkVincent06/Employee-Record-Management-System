@@ -71,14 +71,17 @@ button:active {
 }
 
 /* TABLE */
+.before-table {
+    max-height: 550px;
+    overflow: auto;
+    border-bottom: 2px solid #219ebc;
+    margin: 25px auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 1100px;
+}
 .content-table {
     border-collapse: collapse;
-    margin: 25px auto;
     font-size: 0.9em;
-    min-width: 400px;
-    border-radius: 5px 5px 0 0;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .content-table thead tr {
@@ -86,12 +89,15 @@ button:active {
     color: whitesmoke;
     text-align: left;
     font-weight: bold;
+    position: sticky;
+    top: 0;
 }
 
 .content-table th,
 .content-table td {
     padding: 12px 15px;
-
+    white-space: nowrap;
+    z-index: 1;
 }
 
 .content-table tbody tr {
@@ -100,10 +106,6 @@ button:active {
 
 .content-table tbody tr:nth-of-type(even) {
     background-color: rgba(0, 0, 0, 0.1);
-}
-
-.content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #219ebc;
 }
 
 .content-table tbody tr .table-data-btns {

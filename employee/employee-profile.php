@@ -7,8 +7,7 @@
         // gets all the data of department from db
         include '../crudDB/getDepartmentData.php';
     }
-    
-?>
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,12 +162,16 @@
                     <label>Department*</label>
                     <div class="select-wrapper">
                         <select id="department">
-                            <option value="">Select your department...</option>
-                            <?php foreach($departmentData as $department): ?>
-                                <option value="<?php echo $department['dept_name'] ?>" >
-                                    <?php echo $department['dept_name'] ?>
-                                </option>
-                            <?php endforeach ?>
+                            <?php if($departmentData > 0): ?>
+                                <option value="" <?php if($department == "") { echo ' selected="selected"'; } ?> >Select your department...</option>
+                                <?php foreach($departmentData as $item): ?>
+                                    <option value="<?php echo $item['dept_name'] ?>" <?php if($department === $item['dept_name']) { echo ' selected="selected"'; } ?>  >
+                                        <?php echo $item['dept_name'] ?>
+                                    </option>
+                                <?php endforeach ?>
+                            <?php else: ?>
+                                <option value="" <?php if($department == "") { echo ' selected="selected"'; } ?> >Select your department...</option>
+                            <?php endif ?>
                         </select>
                         <i class="fa-solid fa-caret-down"></i>
                     </div>
@@ -220,9 +223,6 @@
         </div>
     </main>
 
-    <footer>
-
-    </footer>
 
 </body>
 </html>

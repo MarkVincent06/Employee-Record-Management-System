@@ -1,7 +1,7 @@
 <?php
   $servername = "localhost";
-  $username = "markvincent";
-  $password = "syntaxerror";
+  $username = "root";
+  $password = "";
   $dbName = "im_ermsdb";
   
   // Create connection

@@ -32,13 +32,7 @@ $(document).ready(() => {
                 displayError(firstNameInput, "Please enter your first name")
                 return false
             }
-        
-            if (/[^a-zA-Z]/.test(firstNameInput.val())) {
-            // if the name contains non-letter characters, show an error message
-                displayError(firstNameInput, "Please enter a valid name (only letters are allowed)")
-                return false
-            }
-    
+
             return true
         }
 
@@ -46,12 +40,6 @@ $(document).ready(() => {
         function validateLastName(lastNameInput) {
             if (lastNameInput.val().length === 0) {
                 displayError(lastNameInput, "Please enter your last name")
-                return false
-            }
-        
-            if (/[^a-zA-Z]/.test(lastNameInput.val())) {
-            // if the name contains non-letter characters, show an error message
-                displayError(lastNameInput, "Please enter a valid name (only letters are allowed)")
                 return false
             }
     
